@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unité 4 — La protection animale</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1>Unité 4 · La protection animale</h1>
+  <nav class="tabs" id="tabs">
+    <button data-tab="inicio" class="active">Inicio</button>
+    <button data-tab="vocab">Vocabulario</button>
+    <button data-tab="gramatica">Gramática</button>
+    <button data-tab="subjuntivo">Subjuntivo ★</button>
+    <button data-tab="flashcards">Flashcards</button>
+    <button data-tab="quiz">Quiz</button>
+    <button data-tab="escribir">Escribir</button>
+    <button data-tab="conjugar">Conjugar</button>
+    <button data-tab="hacer-examen">Hacer examen ★</button>
+    <button data-tab="examen">Examen PDF</button>
+  </nav>
+</header>
+
+<main>
+  <!-- INICIO -->
+  <section data-panel="inicio" class="panel active">
+    <div class="card">
+      <h2>¿Qué hay aquí?</h2>
+      <p>Material completo de la <strong>Unité 4</strong>: animales, verbos, vocabulario de protección animal y gramática (subjonctif présent, <em>ne…que</em>, obligación e interdicción).</p>
+      <ul class="features">
+        <li><strong>Vocabulario</strong>: tablas filtrables FR↔ES con audio (TTS del navegador).</li>
+        <li><strong>Flashcards</strong>: sistema de repaso con caja de Leitner (5 niveles, guardado local).</li>
+        <li><strong>Quiz</strong>: opción múltiple FR→ES, ES→FR o mixto.</li>
+        <li><strong>Escribir</strong>: traducción con tolerancia a tildes y artículos.</li>
+        <li><strong>Conjugar</strong>: práctica del subjonctif présent.</li>
+        <li><strong>Examen PDF</strong>: genera un examen imprimible con clave de respuestas.</li>
+      </ul>
+      <div class="row">
+        <button id="resetProgress" class="btn-secondary">Reiniciar progreso</button>
+        <span id="stats" class="muted"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Contenidos de la unidad</h2>
+      <ol>
+        <li>Le vocabulaire de la protection animale</li>
+        <li>La formation du subjonctif présent</li>
+        <li>L’utilisation du subjonctif présent</li>
+        <li>La restriction <em>ne…que</em></li>
+        <li>L’obligation et l’interdiction</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- VOCABULARIO -->
+  <section data-panel="vocab" class="panel">
+    <div class="card">
+      <div class="row wrap">
+        <input id="vocabSearch" type="search" placeholder="Buscar (FR o ES)…" />
+        <select id="vocabCat">
+          <option value="all">Todas las categorías</option>
+          <option value="animaux">Les animaux</option>
+          <option value="verbes">Les verbes</option>
+          <option value="protection">Protection animale</option>
+        </select>
+        <button id="ttsToggle" class="btn-secondary" title="Activar/desactivar audio">🔊 Audio: ON</button>
+      </div>
+      <div id="vocabTable" class="vocab-grid"></div>
+    </div>
+  </section>
+
+  <!-- GRAMÁTICA -->
+  <section data-panel="gramatica" class="panel">
+    <div class="card">
+      <h2>1. La formation du subjonctif présent</h2>
+      <p>El presente de subjuntivo francés se forma normalmente a partir de la <strong>3ª persona del plural del presente de indicativo</strong> (<em>ils</em>), quitando <code>-ent</code> y añadiendo las terminaciones:</p>
+      <table class="grammar-table">
+        <thead><tr><th>Pronombre</th><th>Terminación</th><th>Ej. <em>parler</em></th><th>Ej. <em>finir</em></th></tr></thead>
+        <tbody>
+          <tr><td>que je</td><td>-e</td><td>parle</td><td>finisse</td></tr>
+          <tr><td>que tu</td><td>-es</td><td>parles</td><td>finisses</td></tr>
+          <tr><td>qu’il/elle</td><td>-e</td><td>parle</td><td>finisse</td></tr>
+          <tr><td>que nous</td><td>-ions</td><td>parlions</td><td>finissions</td></tr>
+          <tr><td>que vous</td><td>-iez</td><td>parliez</td><td>finissiez</td></tr>
+          <tr><td>qu’ils/elles</td><td>-ent</td><td>parlent</td><td>finissent</td></tr>
+        </tbody>
+      </table>
+      <h3>Verbos irregulares frecuentes</h3>
+      <div class="irregular-grid" id="irregularGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>2. L’utilisation du subjonctif présent</h2>
+      <p>Se usa después de expresiones de <strong>obligación, deseo, emoción, duda, opinión negativa</strong> y ciertas conjunciones.</p>
+      <ul>
+        <li><strong>Obligación / necesidad</strong>: <em>Il faut que…</em>, <em>Il est nécessaire que…</em>, <em>Il est urgent que…</em></li>
+        <li><strong>Deseo / voluntad</strong>: <em>vouloir que</em>, <em>souhaiter que</em>, <em>aimer que</em></li>
+        <li><strong>Emoción</strong>: <em>être content que</em>, <em>avoir peur que</em>, <em>être triste que</em></li>
+        <li><strong>Duda / negación</strong>: <em>douter que</em>, <em>ne pas penser que</em>, <em>ne pas croire que</em></li>
+        <li><strong>Conjunciones</strong>: <em>pour que</em>, <em>avant que</em>, <em>bien que</em>, <em>à condition que</em>, <em>jusqu’à ce que</em></li>
+      </ul>
+      <p class="muted">Ej.: <em>Il faut que nous <strong>protégions</strong> les animaux.</em></p>
+    </div>
+
+    <div class="card">
+      <h2>3. La restriction <em>ne… que</em></h2>
+      <p>Significa <strong>“solamente”</strong>. No es una negación: el verbo conserva su sentido afirmativo.</p>
+      <ul>
+        <li><em>Je <strong>ne</strong> mange <strong>que</strong> des légumes.</em> → Solo como verduras.</li>
+        <li><em>Il <strong>n’</strong>y a <strong>qu’</strong>une solution.</em> → Solo hay una solución.</li>
+      </ul>
+      <p><strong>Posición</strong>: <code>ne</code> antes del verbo, <code>que</code> delante del elemento al que se aplica la restricción.</p>
+      <p class="muted">Equivale a <em>seulement</em>: <em>Je mange seulement des légumes.</em></p>
+    </div>
+
+    <div class="card">
+      <h2>4. L’obligation et l’interdiction</h2>
+      <h3>Obligación</h3>
+      <ul>
+        <li><em>Il faut</em> + infinitivo → <em>Il faut protéger les animaux.</em></li>
+        <li><em>Il faut que</em> + subjuntivo → <em>Il faut que tu protèges les animaux.</em></li>
+        <li><em>Devoir</em> + infinitivo → <em>Nous devons agir.</em></li>
+        <li><em>Être obligé(e) de</em> + infinitivo</li>
+        <li><em>Il est nécessaire / urgent / important de</em> + infinitivo (o <em>que</em> + subj.)</li>
+      </ul>
+      <h3>Interdicción</h3>
+      <ul>
+        <li><em>Il ne faut pas</em> + infinitivo</li>
+        <li><em>Il est interdit de</em> + infinitivo</li>
+        <li><em>Interdire à qqn de</em> + infinitivo</li>
+        <li><em>Ne pas devoir</em> + infinitivo</li>
+        <li>Imperativo negativo: <em>Ne maltraite pas les animaux !</em></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SUBJUNTIVO (sección destacada) -->
+  <section data-panel="subjuntivo" class="panel">
+    <div class="card">
+      <h2>★ El subjuntivo francés — guía completa</h2>
+      <p>El subjuntivo expresa <strong>subjetividad</strong>: lo que el hablante <em>quiere, teme, duda, lamenta</em> o considera <em>necesario</em>. Aparece casi siempre en una <strong>oración subordinada introducida por <code>que</code></strong>.</p>
+      <p class="muted">Regla práctica: si después de <code>que</code> hay obligación, emoción, deseo o duda → <strong>subjuntivo</strong>. Si hay certeza o constatación → <strong>indicativo</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h2>Disparadores del subjuntivo (déclencheurs)</h2>
+      <p class="muted">Memoriza estas expresiones: cuando las veas seguidas de <code>que</code>, el verbo va en subjuntivo.</p>
+      <div id="triggersGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ Disparadores que NO llevan subjuntivo</h2>
+      <p>Estos suelen confundirse. <strong>En afirmativo</strong> llevan indicativo; muchos cambian a subjuntivo solo en forma negativa o interrogativa.</p>
+      <div id="indicTriggersList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Ejercicio 1: ¿Subjuntivo o indicativo?</h2>
+      <p class="muted">Lee la frase, identifica el disparador y elige el modo. Después escribe la forma correcta.</p>
+      <div class="row wrap">
+        <select id="mcCount">
+          <option value="10" selected>10 frases</option>
+          <option value="20">20 frases</option>
+          <option value="all">Todas</option>
+        </select>
+        <button id="mcStart">Empezar</button>
+      </div>
+      <div id="mcBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>Ejercicio 2: Conjugar el subjonctif présent</h2>
+      <p class="muted">Completa con la forma correcta del subjuntivo. Verbos regulares e irregulares mezclados.</p>
+      <div class="row wrap">
+        <select id="cj2Count">
+          <option value="10" selected>10 preguntas</option>
+          <option value="20">20 preguntas</option>
+          <option value="30">30 preguntas</option>
+        </select>
+        <button id="cj2Start">Empezar</button>
+      </div>
+      <div id="cj2Box"></div>
+    </div>
+
+    <div class="card">
+      <h2>Ejercicio 3: Transformar infinitivo → subjuntivo</h2>
+      <p class="muted">Reescribe la frase añadiendo el nuevo sujeto. Cambia <em>de + inf</em> por <em>que + subj</em>.</p>
+      <button id="trStart">Empezar (8 frases)</button>
+      <div id="trBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>Ejercicio 4: Traducir al francés</h2>
+      <p class="muted">Frases con subjuntivo, obligación, interdicción y <em>ne…que</em>.</p>
+      <button id="tlStart">Empezar (16 frases)</button>
+      <div id="tlBox"></div>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section data-panel="flashcards" class="panel">
+    <div class="card flashcard-card">
+      <div class="row wrap">
+        <select id="fcCat">
+          <option value="all">Todas las categorías</option>
+          <option value="animaux">Les animaux</option>
+          <option value="verbes">Les verbes</option>
+          <option value="protection">Protection animale</option>
+        </select>
+        <select id="fcDir">
+          <option value="fr-es">FR → ES</option>
+          <option value="es-fr">ES → FR</option>
+          <option value="mix">Mixto</option>
+        </select>
+        <select id="fcMode">
+          <option value="leitner">Leitner (repaso espaciado)</option>
+          <option value="random">Aleatorio</option>
+        </select>
+      </div>
+      <div id="flashcard" class="flashcard">
+        <div class="fc-front">Pulsa <strong>Empezar</strong></div>
+        <div class="fc-back hidden"></div>
+      </div>
+      <div class="row center">
+        <button id="fcStart">Empezar</button>
+        <button id="fcFlip" disabled>Voltear</button>
+        <button id="fcSpeak" class="btn-secondary" disabled>🔊</button>
+      </div>
+      <div class="row center hidden" id="fcRate">
+        <button data-rate="bad" class="btn-bad">Difícil</button>
+        <button data-rate="ok" class="btn-ok">Bien</button>
+        <button data-rate="good" class="btn-good">Fácil</button>
+      </div>
+      <p id="fcStats" class="muted center"></p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section data-panel="quiz" class="panel">
+    <div class="card">
+      <div class="row wrap">
+        <select id="qzCat">
+          <option value="all">Todas las categorías</option>
+          <option value="animaux">Les animaux</option>
+          <option value="verbes">Les verbes</option>
+          <option value="protection">Protection animale</option>
+        </select>
+        <select id="qzDir">
+          <option value="fr-es">FR → ES</option>
+          <option value="es-fr">ES → FR</option>
+          <option value="mix">Mixto</option>
+        </select>
+        <select id="qzCount">
+          <option value="10">10 preguntas</option>
+          <option value="20" selected>20 preguntas</option>
+          <option value="30">30 preguntas</option>
+        </select>
+        <button id="qzStart">Empezar quiz</button>
+      </div>
+      <div id="qzBox"></div>
+    </div>
+  </section>
+
+  <!-- ESCRIBIR -->
+  <section data-panel="escribir" class="panel">
+    <div class="card">
+      <div class="row wrap">
+        <select id="wrCat">
+          <option value="all">Todas las categorías</option>
+          <option value="animaux">Les animaux</option>
+          <option value="verbes">Les verbes</option>
+          <option value="protection">Protection animale</option>
+        </select>
+        <select id="wrDir">
+          <option value="fr-es">FR → ES</option>
+          <option value="es-fr">ES → FR</option>
+        </select>
+        <label class="checkbox"><input type="checkbox" id="wrStrict" /> Modo estricto (con tildes y artículo)</label>
+        <button id="wrStart">Empezar</button>
+      </div>
+      <div id="wrBox"></div>
+    </div>
+  </section>
+
+  <!-- CONJUGAR -->
+  <section data-panel="conjugar" class="panel">
+    <div class="card">
+      <h2>Conjugación: subjonctif présent</h2>
+      <p class="muted">Práctica de la conjugación tras <em>que</em>. Tildes opcionales.</p>
+      <div class="row wrap">
+        <select id="cjCount">
+          <option value="10" selected>10 preguntas</option>
+          <option value="20">20 preguntas</option>
+        </select>
+        <button id="cjStart">Empezar</button>
+      </div>
+      <div id="cjBox"></div>
+    </div>
+  </section>
+
+  <!-- HACER EXAMEN (digital) -->
+  <section data-panel="hacer-examen" class="panel">
+    <div class="card" id="dxConfig">
+      <h2>★ Hacer examen digital</h2>
+      <p class="muted">Mismo formato que el PDF, pero corregido automáticamente. La nota se calcula contra una base de respuestas posibles (admite variantes, tildes y apóstrofes).</p>
+      <div class="row wrap">
+        <label>Nº vocabulario: <input id="dxVocab" type="number" min="0" max="30" value="8" /></label>
+        <label>Nº conjugación: <input id="dxConj" type="number" min="0" max="30" value="10" /></label>
+        <label>Nº subj/indic: <input id="dxModeChoice" type="number" min="0" max="20" value="8" /></label>
+        <label>Nº transformación: <input id="dxTransform" type="number" min="0" max="8" value="5" /></label>
+        <label>Nº traducción: <input id="dxTranslate" type="number" min="0" max="16" value="8" /></label>
+        <label>Nº ne…que: <input id="dxNeQue" type="number" min="0" max="10" value="4" /></label>
+      </div>
+      <div class="row">
+        <button id="dxStart">Empezar examen</button>
+      </div>
+    </div>
+    <div id="dxExam"></div>
+    <div id="dxResults"></div>
+  </section>
+
+  <!-- EXAMEN -->
+  <section data-panel="examen" class="panel">
+    <div class="card">
+      <h2>Generar examen imprimible</h2>
+      <p class="muted">El subjuntivo es la parte más grande del examen (≈60–70%). Vocabulario reducido. Incluye clave de respuestas en hoja aparte.</p>
+      <div class="row wrap">
+        <label>Nombre alumno: <input id="exName" type="text" placeholder="Opcional" /></label>
+        <label>Nº vocabulario: <input id="exVocab" type="number" min="0" max="30" value="10" /></label>
+        <label>Nº conjugación subj.: <input id="exConj" type="number" min="3" max="30" value="12" /></label>
+        <label>Nº subj/indic: <input id="exModeChoice" type="number" min="0" max="20" value="8" /></label>
+        <label>Nº transformación: <input id="exTransform" type="number" min="0" max="10" value="5" /></label>
+        <label>Nº traducción: <input id="exTranslate" type="number" min="0" max="16" value="8" /></label>
+        <label>Nº ne…que: <input id="exNeQue" type="number" min="0" max="10" value="5" /></label>
+        <label class="checkbox"><input type="checkbox" id="exKey" checked /> Incluir hoja de respuestas</label>
+      </div>
+      <div class="row">
+        <button id="exGen">Generar examen</button>
+        <button id="exPrint" class="btn-secondary">Imprimir / Guardar PDF</button>
+      </div>
+    </div>
+    <div id="examPreview" class="exam-preview"></div>
+  </section>
+</main>
+
+<footer class="muted center">Hecho para estudiar la Unité 4 · Almacenamiento local en tu navegador.</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
