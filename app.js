@@ -112,17 +112,6 @@ $("#vocabSearch").addEventListener("input", renderVocab);
 $("#vocabCat").addEventListener("change", renderVocab);
 renderVocab();
 
-// ====== Irregular subjonctif grid ======
-function renderIrregular() {
-  const grid = $("#irregularGrid");
-  grid.innerHTML = SUBJ_IRREGULAR.map(v => `
-    <div class="irregular-card">
-      <h4>${v.inf}</h4>
-      ${SUBJ_PRONOUNS.map((p, i) => `<div>que ${p}: <strong>${v.forms[i]}</strong></div>`).join("")}
-    </div>`).join("");
-}
-renderIrregular();
-
 // ====== Flashcards (Leitner) ======
 let fcState = { queue: [], current: null, flipped: false };
 
