@@ -13,6 +13,7 @@
     <button data-tab="inicio" class="active">Inicio</button>
     <button data-tab="vocab">Vocabulario</button>
     <button data-tab="gramatica">Gramática</button>
+    <button data-tab="indicativo">Indicativo</button>
     <button data-tab="subjuntivo">Subjuntivo ★</button>
     <button data-tab="flashcards">Flashcards</button>
     <button data-tab="quiz">Quiz</button>
@@ -108,6 +109,86 @@
         <li><em>Ne pas devoir</em> + infinitivo</li>
         <li>Imperativo negativo: <em>Ne maltraite pas les animaux !</em></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- INDICATIVO (base para construir el subjuntivo) -->
+  <section data-panel="indicativo" class="panel">
+    <div class="card">
+      <h2>Presente de indicativo</h2>
+      <p>El presente de indicativo es la <strong>base para formar el subjuntivo</strong>. Recuérdalo siempre:</p>
+      <div class="recipe">
+        <div class="recipe-step"><span class="recipe-num">1</span> <strong>Radical del subj.</strong> = forma de <em>ils</em> sin <code>-ent</code></div>
+        <div class="recipe-step"><span class="recipe-num">2</span> <strong>Excepción nous/vous</strong> = se usa la base de <em>nous</em> del indicativo (por eso muchos verbos tienen <em>doble radical</em>)</div>
+      </div>
+      <p class="muted">Por eso esta pestaña es importante: si dudas en el subjuntivo, vuelve aquí y mira <em>ils</em> y <em>nous</em> del indicativo.</p>
+    </div>
+
+    <div class="card">
+      <h2>Terminaciones del presente de indicativo</h2>
+      <table class="grammar-table">
+        <thead><tr><th>Pronombre</th><th>-ER (parler)</th><th>-IR (finir)</th><th>-RE (vendre)</th></tr></thead>
+        <tbody>
+          <tr><td>je</td><td>parl<strong>e</strong></td><td>fin<strong>is</strong></td><td>vend<strong>s</strong></td></tr>
+          <tr><td>tu</td><td>parl<strong>es</strong></td><td>fin<strong>is</strong></td><td>vend<strong>s</strong></td></tr>
+          <tr><td>il/elle/on</td><td>parl<strong>e</strong></td><td>fin<strong>it</strong></td><td>vend <span class="muted">(sin -t)</span></td></tr>
+          <tr><td>nous</td><td>parl<strong>ons</strong></td><td>fin<strong>issons</strong></td><td>vend<strong>ons</strong></td></tr>
+          <tr><td>vous</td><td>parl<strong>ez</strong></td><td>fin<strong>issez</strong></td><td>vend<strong>ez</strong></td></tr>
+          <tr><td>ils/elles</td><td>parl<strong>ent</strong></td><td>fin<strong>issent</strong></td><td>vend<strong>ent</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Verbos en -ER (regulares)</h2>
+      <p class="muted">El grupo más numeroso. La gran mayoría de los verbos de la unidad (<em>adopter, soigner, sauver, éduquer…</em>) siguen este patrón.</p>
+      <div id="indicErGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>Verbos en -IR (regulares tipo <em>finir</em>)</h2>
+      <p class="muted">Añaden <code>-iss-</code> en plural. Importantes para el subjuntivo porque mantienen ese <code>-iss-</code> en todas las personas.</p>
+      <div id="indicIrGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>Verbos en -RE (regulares)</h2>
+      <p class="muted">En la 3ª persona del singular <strong>no llevan -t</strong>: <em>il vend</em>, no "il vendt".</p>
+      <div id="indicReGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ Verbos con doble radical</h2>
+      <p>Singular y 3ª persona del plural usan un radical; <em>nous/vous</em> usan otro distinto. Este cambio se hereda en el subjuntivo.</p>
+      <div id="indicDobleGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>Verbos totalmente irregulares</h2>
+      <p>Memorízalos. Casi todos tienen también un subjuntivo irregular (especialmente <em>être, avoir, aller, faire, pouvoir, savoir, vouloir</em>).</p>
+      <div id="indicIrregGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2>Práctica: conjugar el presente de indicativo</h2>
+      <p class="muted">Te dice el infinitivo y el pronombre; tú escribes la forma del presente.</p>
+      <div class="row wrap">
+        <select id="ipCount">
+          <option value="10" selected>10 preguntas</option>
+          <option value="20">20 preguntas</option>
+          <option value="30">30 preguntas</option>
+        </select>
+        <select id="ipFamily">
+          <option value="all">Todas las familias</option>
+          <option value="regulares_er">Solo -ER regulares</option>
+          <option value="regulares_ir">Solo -IR regulares</option>
+          <option value="regulares_re">Solo -RE regulares</option>
+          <option value="doble_radical">Solo doble radical</option>
+          <option value="irregulares">Solo irregulares</option>
+        </select>
+        <button id="ipStart">Empezar</button>
+      </div>
+      <div id="ipBox"></div>
     </div>
   </section>
 

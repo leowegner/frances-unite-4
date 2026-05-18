@@ -131,6 +131,59 @@ const SUBJ_REGULAR = [
 
 const SUBJ_PRONOUNS = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
 
+// Presente de indicativo — necesario para construir el subjonctif
+// (radical = "ils" sin -ent; nous/vous = radical alternativo en verbos con cambio).
+// Agrupado por familias para enseñar el patrón.
+const INDIC_PRESENT = {
+  regulares_er: [
+    { inf: "parler",  forms: ["parle", "parles", "parle", "parlons", "parlez", "parlent"] },
+    { inf: "adopter", forms: ["adopte", "adoptes", "adopte", "adoptons", "adoptez", "adoptent"] },
+    { inf: "soigner", forms: ["soigne", "soignes", "soigne", "soignons", "soignez", "soignent"] },
+    { inf: "sauver",  forms: ["sauve", "sauves", "sauve", "sauvons", "sauvez", "sauvent"] },
+    { inf: "éduquer", forms: ["éduque", "éduques", "éduque", "éduquons", "éduquez", "éduquent"] },
+    { inf: "donner",  forms: ["donne", "donnes", "donne", "donnons", "donnez", "donnent"] },
+  ],
+  regulares_ir: [
+    { inf: "finir",    forms: ["finis", "finis", "finit", "finissons", "finissez", "finissent"] },
+    { inf: "agir",     forms: ["agis", "agis", "agit", "agissons", "agissez", "agissent"] },
+    { inf: "nourrir",  forms: ["nourris", "nourris", "nourrit", "nourrissons", "nourrissez", "nourrissent"] },
+    { inf: "réussir",  forms: ["réussis", "réussis", "réussit", "réussissons", "réussissez", "réussissent"] },
+    { inf: "choisir",  forms: ["choisis", "choisis", "choisit", "choisissons", "choisissez", "choisissent"] },
+  ],
+  regulares_re: [
+    { inf: "vendre",   forms: ["vends", "vends", "vend", "vendons", "vendez", "vendent"] },
+    { inf: "attendre", forms: ["attends", "attends", "attend", "attendons", "attendez", "attendent"] },
+    { inf: "répondre", forms: ["réponds", "réponds", "répond", "répondons", "répondez", "répondent"] },
+    { inf: "perdre",   forms: ["perds", "perds", "perd", "perdons", "perdez", "perdent"] },
+  ],
+  // Verbos con doble radical (cambio entre singular/3pl y nous/vous)
+  doble_radical: [
+    { inf: "prendre",  forms: ["prends", "prends", "prend", "prenons", "prenez", "prennent"] },
+    { inf: "venir",    forms: ["viens", "viens", "vient", "venons", "venez", "viennent"] },
+    { inf: "tenir",    forms: ["tiens", "tiens", "tient", "tenons", "tenez", "tiennent"] },
+    { inf: "boire",    forms: ["bois", "bois", "boit", "buvons", "buvez", "boivent"] },
+    { inf: "devoir",   forms: ["dois", "dois", "doit", "devons", "devez", "doivent"] },
+    { inf: "voir",     forms: ["vois", "vois", "voit", "voyons", "voyez", "voient"] },
+    { inf: "recevoir", forms: ["reçois", "reçois", "reçoit", "recevons", "recevez", "reçoivent"] },
+    { inf: "mourir",   forms: ["meurs", "meurs", "meurt", "mourons", "mourez", "meurent"] },
+  ],
+  // Totalmente irregulares
+  irregulares: [
+    { inf: "être",    forms: ["suis", "es", "est", "sommes", "êtes", "sont"] },
+    { inf: "avoir",   forms: ["ai", "as", "a", "avons", "avez", "ont"] },
+    { inf: "aller",   forms: ["vais", "vas", "va", "allons", "allez", "vont"] },
+    { inf: "faire",   forms: ["fais", "fais", "fait", "faisons", "faites", "font"] },
+    { inf: "pouvoir", forms: ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"] },
+    { inf: "savoir",  forms: ["sais", "sais", "sait", "savons", "savez", "savent"] },
+    { inf: "vouloir", forms: ["veux", "veux", "veut", "voulons", "voulez", "veulent"] },
+    { inf: "dire",    forms: ["dis", "dis", "dit", "disons", "dites", "disent"] },
+    { inf: "lire",    forms: ["lis", "lis", "lit", "lisons", "lisez", "lisent"] },
+    { inf: "écrire",  forms: ["écris", "écris", "écrit", "écrivons", "écrivez", "écrivent"] },
+    { inf: "mettre",  forms: ["mets", "mets", "met", "mettons", "mettez", "mettent"] },
+    { inf: "connaître", forms: ["connais", "connais", "connaît", "connaissons", "connaissez", "connaissent"] },
+  ],
+};
+
 // Disparadores (déclencheurs) del subjonctif, agrupados por categoría
 const SUBJ_TRIGGERS = {
   obligation: [

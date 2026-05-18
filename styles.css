@@ -304,6 +304,17 @@ input:focus, select:focus { outline: 2px solid var(--accent); }
 .trigger-group h3 { color: var(--accent); margin: 8px 0 4px; }
 .trigger-group .grammar-table td:first-child { width: 40%; }
 
+/* Indicativo: resalta nous/ils porque son la base del subjuntivo */
+.indic-table { font-size: 0.9rem; }
+.indic-table td, .indic-table th { padding: 4px 8px; }
+.indic-table td:first-child { text-align: left; }
+.indic-table .col-highlight {
+  background: rgba(110, 168, 255, 0.12);
+  border-left: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+}
+.indic-table thead .col-highlight { color: var(--accent); font-weight: 700; }
+
 /* Sección de conjugación detallada */
 ol.steps { padding-left: 22px; }
 ol.steps li { margin: 6px 0; }

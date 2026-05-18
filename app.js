@@ -651,6 +651,93 @@ if (tlStartBtn) {
   });
 }
 
+// ====== Indicativo: tablas de conjugación ======
+function renderIndicGroup(containerId, verbs, highlight) {
+  const el = $("#" + containerId);
+  if (!el) return;
+  // highlight: array de índices (0..5) a resaltar (p.ej. [3,5] para nous + ils)
+  const h = new Set(highlight || []);
+  el.innerHTML = `
+    <table class="grammar-table indic-table">
+      <thead><tr>
+        <th>verbo</th>
+        ${SUBJ_PRONOUNS.map((p, i) => `<th class="${h.has(i) ? 'col-highlight' : ''}">${p}</th>`).join("")}
+      </tr></thead>
+      <tbody>
+        ${verbs.map(v => `<tr>
+          <td><strong>${v.inf}</strong></td>
+          ${v.forms.map((f, i) => `<td class="${h.has(i) ? 'col-highlight' : ''}">${f}</td>`).join("")}
+        </tr>`).join("")}
+      </tbody>
+    </table>`;
+}
+
+// Resaltamos `nous` (3) y `ils/elles` (5): las dos formas que dan origen al subjuntivo
+renderIndicGroup("indicErGrid",    INDIC_PRESENT.regulares_er, [3, 5]);
+renderIndicGroup("indicIrGrid",    INDIC_PRESENT.regulares_ir, [3, 5]);
+renderIndicGroup("indicReGrid",    INDIC_PRESENT.regulares_re, [3, 5]);
+renderIndicGroup("indicDobleGrid", INDIC_PRESENT.doble_radical, [3, 5]);
+renderIndicGroup("indicIrregGrid", INDIC_PRESENT.irregulares,   [3, 5]);
+
+// ====== Ejercicio de presente de indicativo ======
+let ipState = null;
+function buildIndicQuestions(n, family) {
+  let pool;
+  if (family === "all") {
+    pool = Object.values(INDIC_PRESENT).flat();
+  } else {
+    pool = INDIC_PRESENT[family] || [];
+  }
+  const items = [];
+  for (let i = 0; i < n; i++) {
+    const v = pool[Math.floor(Math.random() * pool.length)];
+    const pIdx = Math.floor(Math.random() * 6);
+    items.push({ inf: v.inf, pronoun: SUBJ_PRONOUNS[pIdx], answer: v.forms[pIdx] });
+  }
+  return items;
+}
+function renderIp() {
+  if (!ipState) return;
+  const { items, idx } = ipState;
+  if (idx >= items.length) {
+    $("#ipBox").innerHTML = `<div class="cj-question"><h3>Resultado: ${ipState.correct} / ${items.length}</h3></div>`;
+    ipState = null;
+    return;
+  }
+  const q = items[idx];
+  $("#ipBox").innerHTML = `
+    <div class="progress-bar"><div style="width:${(idx / items.length) * 100}%"></div></div>
+    <div class="cj-question">
+      <div class="muted">Pregunta ${idx + 1} de ${items.length}</div>
+      <h3><strong>${q.pronoun}</strong> ___ (${q.inf}) <span class="muted">— presente de indicativo</span></h3>
+      <input type="text" class="cj-input" autocomplete="off" />
+      <div class="row"><button class="ip-check">Comprobar</button></div>
+      <div class="feedback hidden"></div>
+    </div>`;
+  const input = $(".cj-input");
+  input.focus();
+  const submit = () => {
+    const ok = normalize(input.value) === normalize(q.answer);
+    const fb = $(".feedback");
+    fb.classList.remove("hidden");
+    fb.classList.add(ok ? "ok" : "ko");
+    fb.textContent = ok ? "¡Correcto!" : `Respuesta: ${q.answer}`;
+    if (ok) ipState.correct++;
+    setTimeout(() => { ipState.idx++; renderIp(); }, ok ? 700 : 1800);
+  };
+  $(".ip-check").addEventListener("click", submit);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") submit(); });
+}
+const ipStartBtn = $("#ipStart");
+if (ipStartBtn) {
+  ipStartBtn.addEventListener("click", () => {
+    const n = parseInt($("#ipCount").value);
+    const fam = $("#ipFamily").value;
+    ipState = { items: buildIndicQuestions(n, fam), idx: 0, correct: 0 };
+    renderIp();
+  });
+}
+
 // ====== Examen ======
 function generateExam() {
   const name = $("#exName").value.trim();
